@@ -1,2 +1,15 @@
 docker run -d --name=metricbeat --mount type=bind,source=/proc,target=/hostfs/proc,readonly --mount type=bind,source=/sys/fs/cgroup,target=/hostfs/sys/fs/cgroup,readonly --mount type=bind,source=/,target=/hostfs,readonly --net=host metricbeat:7.6.2 -e -system.hostfs=/hostfs
 docker system df 
+
+
+
+
+No manual entry for curator
+[docker@kfdcel01 ~]$ docker exec -it hlog-curator /bin/sh
+/ # cat config/curator_schedule.sh
+#!/bin/sh
+http_proxy=''
+https_proxy=''
+curator --dry-run --config /config/config_file.yml /config/action_file.yml
+/ #
+
